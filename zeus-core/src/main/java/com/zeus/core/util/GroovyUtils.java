@@ -20,7 +20,7 @@ public class GroovyUtils {
     public static Class parseClazz(String instanceName, String groovyCode) {
         Class groovyClazz = null;
         try {
-            ZenuCache.putCodeCache(instanceName, DigestUtils.md5DigestAsHex(groovyCode.getBytes(StandardCharsets.UTF_8)));
+            ZeusCache.putCodeCache(instanceName, DigestUtils.md5DigestAsHex(groovyCode.getBytes(StandardCharsets.UTF_8)));
             groovyClazz = GROOVY_CLASS_LOADER.parseClass(groovyCode);
             log.info("groovy脚本成功解析:clazz=[{}]", instanceName);
         } catch (Exception e) {

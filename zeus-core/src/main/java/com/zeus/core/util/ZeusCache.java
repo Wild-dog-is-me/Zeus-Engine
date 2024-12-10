@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-public class ZenuCache {
+public class ZeusCache {
 
     private static final Map<String, String> CODE_CACHE = new HashMap(128);
 
