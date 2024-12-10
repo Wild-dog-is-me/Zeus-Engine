@@ -27,8 +27,13 @@ public class ZenuCache {
      * @return
      */
     public static boolean isDiff(String key, String currentGroovyCode) {
-        String currentCodeMd5 = DigestUtils.md5DigestAsHex(currentGroovyCode.getBytes(StandardCharsets.UTF_8));
         String originalCode = getCodeCache(key);
+        // * 避免计算哈希
+        if (currentGroovyCode.length() != originalCode.length()) {
+            // * 长度不等一定不相等
+            return Boolean.FALSE;
+        }
+        String currentCodeMd5 = DigestUtils.md5DigestAsHex(currentGroovyCode.getBytes(StandardCharsets.UTF_8));
         if (StringUtils.hasText(originalCode) && originalCode.equals(currentCodeMd5)) {
             log.info("groovy脚本[{}]未变更，不编译解析", key);
             return Boolean.FALSE;
