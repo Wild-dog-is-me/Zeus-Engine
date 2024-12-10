@@ -5,9 +5,11 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 @Data
-@Configurable
+@Component
 @ConfigurationProperties(prefix = ZeusConstant.PROPERTIES_PREFIX)
 public class ZeusConfigProperties {
 

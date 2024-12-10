@@ -8,6 +8,7 @@ import com.zeus.core.util.GroovyUtils;
 import com.zeus.core.util.ZeusCache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
 import java.util.Objects;
 
 @Slf4j
+@Component
 public abstract class BaseZeusBaseConfig implements ZeusBaseConfig {
 
     @Resource
