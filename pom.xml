@@ -10,6 +10,7 @@
 
     <modules>
         <module>zeus-core</module>
+        <module>zens-starter</module>
     </modules>
 
     <parent>
