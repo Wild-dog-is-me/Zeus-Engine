@@ -7,15 +7,15 @@
         <artifactId>zeus-engine</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <packaging>jar</packaging>
+
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>zens-starter</artifactId>
+    <artifactId>zeus-starter</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>io.github.ZhongFuCheng3y</groupId>
-            <artifactId>hades-core</artifactId>
-            <version>1.0.4</version>
+            <groupId>com.zeus</groupId>
+            <artifactId>zeus-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.boot</groupId>

@@ -10,7 +10,8 @@
 
     <modules>
         <module>zeus-core</module>
-        <module>zens-starter</module>
+        <module>zeus-starter</module>
+        <module>zeus-example</module>
     </modules>
 
     <parent>
@@ -102,22 +103,6 @@
                 </executions>
             </plugin>
 
-
-            <!-- Gpg Signature -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>ossrh</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 

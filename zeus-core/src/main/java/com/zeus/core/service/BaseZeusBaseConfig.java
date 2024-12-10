@@ -18,7 +18,7 @@ import java.util.Objects;
 public abstract class BaseZeusBaseConfig implements ZeusBaseConfig {
 
     @Resource
-    private ZeusConfigProperties configProperties;
+    protected ZeusConfigProperties configProperties;
 
     @Resource
     private RegisterBeanService registerBeanService;
