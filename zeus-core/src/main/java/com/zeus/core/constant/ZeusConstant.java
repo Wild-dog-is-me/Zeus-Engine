@@ -14,9 +14,9 @@ public class ZeusConstant {
     public static final String ZEUS_ENABLED_PROPERTIES = PROPERTIES_PREFIX + ".enabled";
 
     /**
-     * nacos默认group
+     * nacos注册group
      */
-    public static final String NACOS_DEFAULT_GROUP = "DEFAULT_GROUP";
+    public static final String ZEUS_ENGINE_GROUP = "ZEUS_ENGINE_GROUP";
 
 
     /**
