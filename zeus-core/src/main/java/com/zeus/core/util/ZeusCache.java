@@ -28,10 +28,11 @@ public class ZeusCache {
      */
     public static boolean isDiff(String key, String currentGroovyCode) {
         String originalCode = getCodeCache(key);
-        // * 避免计算哈希
-        if (currentGroovyCode.length() != originalCode.length()) {
-            // * 长度不等一定不相等
-            return Boolean.FALSE;
+        //避免计算哈希
+        if (StringUtils.hasText(originalCode)) {
+            if (currentGroovyCode.length() != originalCode.length()) {
+                return Boolean.FALSE;
+            }
         }
         String currentCodeMd5 = DigestUtils.md5DigestAsHex(currentGroovyCode.getBytes(StandardCharsets.UTF_8));
         if (StringUtils.hasText(originalCode) && originalCode.equals(currentCodeMd5)) {

@@ -28,9 +28,12 @@ public abstract class BaseZeusBaseConfig implements ZeusBaseConfig {
     @PostConstruct
     public void init() {
         // 启动解析并注册监听器
-        if (StringUtils.hasText(getConfigByName(configProperties.getConfigName()))) {
-            bootstrap(getConfigByName(configProperties.getConfigName()));
+        log.info("[Zeus-Engine] 启动解析并注册监听器 配置名称:[{}]", configProperties.getConfigName());
+        String conf = getConfigByName(configProperties.getConfigName());
+        if (StringUtils.hasText(conf)) {
+            bootstrap(conf);
             addListener();
+            logLogo();
         }
     }
 
@@ -46,6 +49,7 @@ public abstract class BaseZeusBaseConfig implements ZeusBaseConfig {
             MainConfig config = JSON.parseObject(mainConfig, MainConfig.class);
             for (String instanceName : config.getInstanceNames()) {
                 String groovyCode = getConfigByName(instanceName);
+                log.info("instanceName:[{}] - groovyCode:[{}]", instanceName, groovyCode);
                 if (StringUtils.hasText(groovyCode) && ZeusCache.isDiff(instanceName, groovyCode)) {
                     register(instanceName, groovyCode);
                 }
@@ -66,7 +70,19 @@ public abstract class BaseZeusBaseConfig implements ZeusBaseConfig {
         Class groovyClazz = GroovyUtils.parseClazz(instanceName, groovyCode);
         if (Objects.nonNull(groovyClazz)) {
             Object registerBean = registerBeanService.registerBean(instanceName, groovyClazz);
-            log.info("bean:[{}]已经注册到Spring IOC 容器中", registerBean.getClass().getName());
+            log.info("bean:[{}]已经注册到 Spring IOC 容器中", registerBean.getClass().getName());
         }
+    }
+
+    public void logLogo() {
+        log.warn("\n" +
+                "████████ ████████ ██     ██  ████████       ████████ ████     ██   ████████  ██ ████     ██ ████████\n" +
+                "░░░░░░██ ░██░░░░░ ░██    ░██ ██░░░░░░       ░██░░░░░ ░██░██   ░██  ██░░░░░░██░██░██░██   ░██░██░░░░░ \n" +
+                "     ██  ░██      ░██    ░██░██             ░██      ░██░░██  ░██ ██      ░░ ░██░██░░██  ░██░██      \n" +
+                "    ██   ░███████ ░██    ░██░█████████ █████░███████ ░██ ░░██ ░██░██         ░██░██ ░░██ ░██░███████ \n" +
+                "   ██    ░██░░░░  ░██    ░██░░░░░░░░██░░░░░ ░██░░░░  ░██  ░░██░██░██    █████░██░██  ░░██░██░██░░░░  \n" +
+                "  ██     ░██      ░██    ░██       ░██      ░██      ░██   ░░████░░██  ░░░░██░██░██   ░░████░██      \n" +
+                " ████████░████████░░███████  ████████       ░████████░██    ░░███ ░░████████ ░██░██    ░░███░████████\n" +
+                "░░░░░░░░ ░░░░░░░░  ░░░░░░░  ░░░░░░░░        ░░░░░░░░ ░░      ░░░   ░░░░░░░░  ░░ ░░      ░░░ ░░░░░░░░ \n");
     }
 }
