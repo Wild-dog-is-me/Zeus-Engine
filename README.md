@@ -43,8 +43,8 @@ nacos.config.namespace=dev
 nacos.config.enabled=true
 
 # zeus param you should write
-hades.enabled=true
-hades.config-name=zeus # nacos配置的Data ID
+zeus.enabled=true
+zeus.config-name=zeus # nacos配置的Data ID
 ```
 1、在nacos配置中心新增主配置，Data ID需要与配置文件保持一致，Group为```ZEUS_ENGINE_GROUP```
 ![](doc/images/pic02.png)
